@@ -9,11 +9,11 @@ class Contacts extends Component {
         {value => {
           const { contacts } = value;
           return (
-            <>
+            <React.Fragment>
               {contacts.map(contact => (
                 <Contact key={contact.id} contact={contact} />
               ))}
-            </>
+            </React.Fragment>
           );
         }}
       </Consumer>
