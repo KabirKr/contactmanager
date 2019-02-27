@@ -2,13 +2,13 @@ import React from "react";
 
 const NotFound = () => {
   return (
-    <div>
-      <h1 className="display-4">
+    <>
+      <h1 className="display-4 text-center">
         {" "}
-        <span className="text-danger">404</span> Page Not Found!
+        <span className="text-danger ">404</span> Page Not Found!
       </h1>
-      <p className="lead">Soory, that page does not exist</p>
-    </div>
+      <p className="lead text-center">Soory, this page does not exist</p>
+    </>
   );
 };
 

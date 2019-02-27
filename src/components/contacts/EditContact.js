@@ -9,6 +9,7 @@ class EditContact extends Component {
     name: "",
     email: "",
     phone: "",
+    website: "",
     errors: {}
   };
 
@@ -23,14 +24,15 @@ class EditContact extends Component {
     this.setState({
       name: contact.name,
       email: contact.email,
-      phone: contact.phone
+      phone: contact.phone,
+      website: contact.website
     });
   }
 
   onSubmit = async (dispatch, e) => {
     e.preventDefault();
 
-    const { name, email, phone } = this.state;
+    const { name, email, phone, website } = this.state;
 
     // Check For Errors
     if (name === "") {
@@ -61,7 +63,8 @@ class EditContact extends Component {
     const updateContact = {
       name,
       email,
-      phone
+      phone,
+      website
     };
 
     const { id } = this.props.match.params;
@@ -78,6 +81,7 @@ class EditContact extends Component {
       name: "",
       email: "",
       phone: "",
+      website: "",
       errors: {}
     });
 
@@ -88,7 +92,7 @@ class EditContact extends Component {
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    const { name, email, phone, errors } = this.state;
+    const { name, email, phone, website, errors } = this.state;
 
     return (
       <Consumer>
@@ -96,7 +100,9 @@ class EditContact extends Component {
           const { dispatch } = value;
           return (
             <div className="card mb-3">
-              <div className="card-header">Edit Contact</div>
+              <div className="card-header">
+                <h3 className="text-center">Edit Contact</h3>
+              </div>
               <div className="card-body">
                 <form onSubmit={this.onSubmit.bind(this, dispatch)}>
                   <TextInputGroup
@@ -125,10 +131,17 @@ class EditContact extends Component {
                     onChange={this.onChange}
                     error={errors.phone}
                   />
+                  <TextInputGroup
+                    label="Website"
+                    name="website"
+                    placeholder="Enter Website..."
+                    value={website}
+                    onChange={this.onChange}
+                  />
                   <input
                     type="submit"
                     value="Update Contact"
-                    className="btn btn-block btn-light"
+                    className="btn btn-block btn-warning"
                   />
                 </form>
               </div>

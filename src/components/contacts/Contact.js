@@ -19,7 +19,7 @@ class Contact extends Component {
   };
 
   render() {
-    const { id, name, email, phone } = this.props.contact;
+    const { id, name, email, phone, website } = this.props.contact;
     const { showContactInfo } = this.state;
 
     return (
@@ -27,7 +27,7 @@ class Contact extends Component {
         {value => {
           const { dispatch } = value;
           return (
-            <div className="card card-body mb-3">
+            <div className="card card-body mb-3 ">
               <h4>
                 {name}
                 <i
@@ -40,18 +40,17 @@ class Contact extends Component {
                   style={{ cursor: "pointer" }}
                 />
                 <i
-                  className="fas fa-times"
+                  className="fas fa-trash-alt"
                   style={{ cursor: "pointer", float: "right", color: "red" }}
                   onClick={this.onDeleteClick.bind(this, id, dispatch)}
                 />
 
                 <Link to={`contact/edit/${id}`}>
                   <i
-                    className="fas fa-pencil-alt"
+                    className="fas fa-edit text-warning"
                     style={{
                       cursor: "pointer",
                       float: "right",
-                      color: "black",
                       marginRight: "1rem"
                     }}
                   />
@@ -60,8 +59,18 @@ class Contact extends Component {
 
               {showContactInfo ? (
                 <ul className="list-group">
-                  <li className="list-group-item">Email: {email}</li>
-                  <li className="list-group-item">Phone: {phone}</li>
+                  <li className="list-group-item">
+                    <span className="lead mr-2">Email :</span>
+                    {email}
+                  </li>
+                  <li className="list-group-item">
+                    <span className="lead mr-2">Phone :</span>
+                    {phone}
+                  </li>
+                  <li className="list-group-item">
+                    <span className="lead mr-2">Website :</span>
+                    {website}
+                  </li>
                 </ul>
               ) : null}
             </div>
